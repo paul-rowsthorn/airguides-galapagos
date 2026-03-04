@@ -36,6 +36,14 @@
     .stop-tags { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #d4af6a; border-left: 2px solid #d4af6a; padding-left: 0.8rem; margin-bottom: 2.5rem; display: inline-block; }
     .pro-tip { font-size: 0.8rem; color: #6a6058; font-style: italic; margin-top: 1.2rem; padding-left: 1rem; border-left: 1px solid #333; max-width: 600px; line-height: 1.7; }
 
+    .lifestyle-shot { margin-bottom: 1rem; position: relative; overflow: hidden; background: #111; }
+    .lifestyle-shot img { width: 100%; height: 480px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .lifestyle-shot:hover img { transform: scale(1.03); }
+    .lifestyle-shot .ls-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem 1rem; background: linear-gradient(transparent, rgba(0,0,0,0.75)); }
+    .lifestyle-shot .ls-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: #d4af6a; margin-bottom: 0.3rem; }
+    .lifestyle-shot .ls-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 300; }
+    @media (max-width: 640px) { .lifestyle-shot img { height: 300px; } }
+
     .grid { display: grid; gap: 10px; }
     .g2 { grid-template-columns: 1fr 1fr; }
     .g3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -94,6 +102,13 @@
   <h2>León Dormido — Kicker Rock</h2>
   <p class="stop-desc">The money shot. Sheer volcanic spires rising 148m from the Pacific, best seen at sunrise when orange-pink light reflects off still water. Snorkel the narrow channel between the two rocks — hammerhead sharks, sea turtles, and Galápagos sharks patrol the passage.</p>
   <span class="stop-tags">Sunrise photography · Snorkelling · Shark encounters</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-kicker-rock.jpg" alt="Snorkeller at Kicker Rock" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">The experience</div>
+      <div class="ls-text">Drifting through the channel, 20 metres below the surface, with hammerheads circling.</div>
+    </div>
+  </div>
   <div class="grid g2l">
     <div class="photo h400">
       <img src="img/kicker-rock-sunrise.jpg" alt="Kicker Rock sunrise" loading="lazy">
@@ -180,6 +195,13 @@
   <h2>Post Office Bay — The Barrel</h2>
   <p class="stop-desc">A 200-year-old wooden barrel used by whalers as a message-passing system still stands here — and still works. Visitors leave postcards with no stamp, hoping a passing stranger heading to that destination will hand-deliver them. Some postcards have been delivered years later. Some never arrive.</p>
   <span class="stop-tags">Historic landmark · Shareable story · Quirky content gold</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-post-office.jpg" alt="Post Office Bay barrel and signs" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">200 years of letters</div>
+      <div class="ls-text">No postage. No stamps. Just a wooden barrel and the honour system. Leave a card — someone might deliver it.</div>
+    </div>
+  </div>
   <div class="grid g2r">
     <div class="nested" style="grid-template-rows: 1fr;">
       <div class="photo h320">
@@ -222,6 +244,13 @@
   <h2>Gardner Bay — Sea Lions</h2>
   <p class="stop-desc">One of the most beautiful beaches in the world, and one of the most unusual. The white sand at Gardner Bay is shared with a colony of Galápagos sea lions who have no instinct to avoid humans. Pups will approach you out of curiosity. Mothers sleep centimetres from your feet. Juveniles play alongside snorkellers in the crystal shallows. Also — Christmas iguanas with vivid red and green breeding colours.</p>
   <span class="stop-tags">Sea lion encounters · White sand beach · Christmas iguanas</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-sea-lion.jpg" alt="Tourist with sea lions at Gardner Bay" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">The encounter</div>
+      <div class="ls-text">Sea lion pups approach out of curiosity. They have never learned to fear humans.</div>
+    </div>
+  </div>
   <div class="grid g2l">
     <div class="photo h400">
       <img src="img/sea-lion-beach.jpg" alt="Sea lion beach" loading="lazy">
@@ -244,6 +273,13 @@
   <h2>Santa Cruz Highlands — Giant Tortoises</h2>
   <p class="stop-desc">The rolling green highlands are home to free-roaming giant tortoises — some over 100 years old and weighing 250kg. In the morning mist, ancient tortoises move through the grasslands in a scene that has barely changed in a million years. Guests walk among them at eye level, with nothing between you and a creature that was alive before your grandparents were born.</p>
   <span class="stop-tags">Giant tortoises · Morning mist · Free-roaming wildlife</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-tortoise-people.jpg" alt="Tourists with giant tortoises in the highlands" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">The moment</div>
+      <div class="ls-text">Creatures that were alive before your grandparents were born, grazing a metre from where you stand.</div>
+    </div>
+  </div>
   <div class="grid g2">
     <div class="photo h320">
       <img src="img/tortoise1.jpg" alt="Giant tortoise close up" loading="lazy">
@@ -284,6 +320,13 @@
   <h2>Bartolomé — Pinnacle Rock</h2>
   <p class="stop-desc">The most photographed view in the Galápagos, and for good reason. A 374-step boardwalk leads to a panorama that stops conversation entirely — Pinnacle Rock in the foreground, the turquoise bay below, neighbouring Santiago behind. Galápagos penguins nest at the base of the rock — tropical penguins in warm water, an impossible combination.</p>
   <span class="stop-tags">The postcard shot · Galapagos penguins · Summit panorama</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-pinnacle.jpg" alt="Tourists on the Bartolomé boardwalk" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">The climb</div>
+      <div class="ls-text">374 steps in the heat. Then the view opens up — and everyone goes quiet.</div>
+    </div>
+  </div>
   <div class="grid g3">
     <div class="photo h320">
       <img src="img/pinnacle-rock.jpg" alt="Pinnacle Rock Bartolome" loading="lazy">
@@ -307,6 +350,13 @@
   <h2>Sombrero Chino — Chinese Hat Islet</h2>
   <p class="stop-desc">A perfectly cone-shaped volcanic island visible from the water — its silhouette looks exactly like a traditional Chinese straw hat. Snorkel the crystal-clear channel alongside Galápagos penguins, white-tipped reef sharks, and sea turtles. One of the most serene and photogenic anchorages in the archipelago.</p>
   <span class="stop-tags">Volcanic cone silhouette · Penguins · Snorkelling with sharks</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-sombrero.jpg" alt="Snorkeller at Sombrero Chino" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">The water</div>
+      <div class="ls-text">Crystal clear, warm, and full of life. White-tipped reef sharks and penguins sharing the same channel.</div>
+    </div>
+  </div>
   <div class="grid g2">
     <div class="photo h320">
       <img src="img/sombrero-shark.jpg" alt="Sombrero Chino shark" loading="lazy">
@@ -328,6 +378,13 @@
   <h2>North Seymour — Frigatebirds</h2>
   <p class="stop-desc">The male magnificent frigatebird inflates a brilliant scarlet throat pouch the size of a football during breeding season — one of the most bizarre and spectacular displays in the natural world. Nothing else looks like this anywhere on Earth. Birds display within metres of guests on the trail. Blue-footed boobies perform their absurd foot-shuffle courtship dance alongside.</p>
   <span class="stop-tags">Frigatebird · Scarlet throat pouch · Stop-scroll guaranteed</span>
+  <div class="lifestyle-shot">
+    <img src="img/people-frigatebird.jpg" alt="Visitor among frigatebirds North Seymour" loading="lazy">
+    <div class="ls-cap">
+      <div class="ls-label">Up close</div>
+      <div class="ls-text">The trail puts you metres from birds that have never evolved a reason to move out of your way.</div>
+    </div>
+  </div>
   <div class="grid g2">
     <div class="photo h360">
       <img src="img/frigatebird-colony.jpg" alt="Frigatebirds colony North Seymour" loading="lazy">
