@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galapagos Islands — Photography Itinerary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0ede8; }
+
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+      background: url('https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Kicker-Rock-at-Sunrise-Galapagos.jpeg?ssl=1') center/cover no-repeat;
+    }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.7)); }
+    .hero-content { position: relative; z-index: 1; padding: 2rem; }
+    .eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: #d4af6a; margin-bottom: 1rem; font-weight: 500; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; }
+    .hero p { font-size: 1.1rem; font-weight: 300; max-width: 540px; margin: 0 auto 2rem; color: rgba(255,255,255,0.85); line-height: 1.75; }
+    .badge { display: inline-block; border: 1px solid rgba(212,175,106,0.6); color: #d4af6a; padding: 0.6rem 1.5rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    .intro { max-width: 720px; margin: 0 auto; padding: 5rem 2rem 3rem; text-align: center; }
+    .intro h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.2rem; }
+    .intro p { font-size: 1rem; line-height: 1.85; color: #9a9087; font-weight: 300; }
+
+    .divider { width: 60px; height: 1px; background: #d4af6a; margin: 3rem auto; opacity: 0.4; }
+    .section-label { text-align: center; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: #d4af6a; margin-bottom: 4rem; }
+
+    .stop { max-width: 1080px; margin: 0 auto 7rem; padding: 0 2rem; }
+    .stop-num { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af6a; font-weight: 500; margin-bottom: 0.4rem; }
+    .stop h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1rem; }
+    .stop-desc { font-size: 0.95rem; line-height: 1.85; color: #8a8078; max-width: 660px; margin-bottom: 0.8rem; font-weight: 300; }
+    .stop-tags { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #d4af6a; border-left: 2px solid #d4af6a; padding-left: 0.8rem; margin-bottom: 2.5rem; display: inline-block; }
+    .pro-tip { font-size: 0.8rem; color: #6a6058; font-style: italic; margin-top: 1.2rem; padding-left: 1rem; border-left: 1px solid #333; max-width: 600px; line-height: 1.7; }
+
+    .grid { display: grid; gap: 10px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr 1fr; }
+    .g2l { grid-template-columns: 3fr 2fr; }
+    .g2r { grid-template-columns: 2fr 3fr; }
+
+    .photo { overflow: hidden; position: relative; background: #111; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .photo:hover img { transform: scale(1.04); }
+    .photo-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 1rem 0.75rem; background: linear-gradient(transparent, rgba(0,0,0,0.7)); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+
+    .h460 { height: 460px; } .h400 { height: 400px; } .h360 { height: 360px; } .h320 { height: 320px; } .h280 { height: 280px; } .h240 { height: 240px; }
+    .nested { display: grid; gap: 10px; }
+
+    .island-divider { max-width: 1080px; margin: 0 auto 4rem; padding: 0 2rem; }
+    .island-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #333; border-top: 1px solid #1a1a1a; padding-top: 1rem; }
+
+    footer { text-align: center; padding: 4rem 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.07); }
+    .f-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #d4af6a; margin-bottom: 0.4rem; }
+    .f-sub { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #444; margin-bottom: 1.5rem; }
+    .f-url { font-size: 0.85rem; color: #555; }
+    .f-url a { color: #d4af6a; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .g2, .g3, .g2l, .g2r { grid-template-columns: 1fr; }
+      .h460, .h400, .h360, .h320, .h280, .h240 { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Photography Expedition</div>
+    <h1>The Galápagos<br>Islands</h1>
+    <p>Seven days. Twelve extraordinary locations. Wildlife that has never learned to fear humans.</p>
+    <div class="badge">With Airguides</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <h2>An island unlike anywhere on Earth</h2>
+  <p>The Galápagos remain one of the last places on the planet where wildlife simply doesn't run from you. Where you can sit beside a sea lion, lock eyes with a giant tortoise, and photograph an albatross courtship dance from two metres away. This itinerary takes you to the stops where those moments happen most powerfully.</p>
+</div>
+<div class="divider"></div>
+<div class="section-label">The Itinerary</div>
+
+<!-- ——— SAN CRISTOBAL ——— -->
+<div class="island-divider"><div class="island-label">San Cristóbal Island</div></div>
+
+<!-- STOP 1: KICKER ROCK -->
+<div class="stop">
+  <div class="stop-num">Stop 01</div>
+  <h2>León Dormido — Kicker Rock</h2>
+  <p class="stop-desc">The money shot. Sheer volcanic spires rising 148m from the Pacific, best seen at sunrise when orange-pink light reflects off still water. Snorkel the narrow channel between the two rocks — hammerhead sharks, sea turtles, and Galápagos sharks patrol the passage.</p>
+  <span class="stop-tags">Sunrise photography · Snorkelling · Shark encounters</span>
+  <div class="grid g2l">
+    <div class="photo h400">
+      <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Kicker-Rock-at-Sunrise-Galapagos.jpeg?ssl=1" alt="Kicker Rock sunrise" loading="lazy">
+      <div class="photo-cap">León Dormido at sunrise</div>
+    </div>
+    <div class="nested" style="grid-template-rows: 1fr 1fr;">
+      <div class="photo">
+        <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Kicker-Rock-Channel-at-Sunrise-Galapagos.jpeg?ssl=1" alt="Kicker Rock channel" loading="lazy">
+        <div class="photo-cap">The iconic split channel</div>
+      </div>
+      <div class="photo">
+        <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Kicker-Rock-Sunrise-Galapagos.jpeg?ssl=1" alt="Kicker Rock wider angle" loading="lazy">
+        <div class="photo-cap">Wider sunrise angle</div>
+      </div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Circumnavigation gives you the "sleeping lion" shape from one side and the "boot/kicker" from the other — both are compelling. Go wide.</p>
+</div>
+
+<!-- STOP 2: CERRO BRUJO -->
+<div class="stop">
+  <div class="stop-num">Stop 02</div>
+  <h2>Cerro Brujo — Wizard Hill Beach</h2>
+  <p class="stop-desc">White coral sand contrasted against black lava rock, with electric orange and red Sally Lightfoot crabs scattered across the dark surface. The colour contrast is extraordinary. One of the most visually striking beaches in the archipelago, and almost completely deserted.</p>
+  <span class="stop-tags">White sand beach · Sally Lightfoot crabs · Colour contrast photography</span>
+  <div class="grid g2">
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Paisaje_en_Cerro_Brujo,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_109.JPG" alt="Cerro Brujo beach" loading="lazy">
+      <div class="photo-cap">Cerro Brujo beach landscape</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zayapa_(Grapsus_grapsus),_Cerro_Brujo,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_151.JPG" alt="Sally Lightfoot crab" loading="lazy">
+      <div class="photo-cap">Sally Lightfoot crab close-up</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 3: PUNTA PITT -->
+<div class="stop">
+  <div class="stop-num">Stop 03</div>
+  <h2>Punta Pitt — Three Boobies</h2>
+  <p class="stop-desc">The only place on Earth where all three booby species nest side by side — blue-footed, red-footed, and Nazca. The blue-footed booby's absurd courtship dance (lifting those improbable turquoise feet one at a time) is one of the most reliably entertaining wildlife moments in the Galápagos.</p>
+  <span class="stop-tags">Blue-footed boobies · Red-footed boobies · Endemic species</span>
+  <div class="grid g2">
+    <div class="photo h320">
+      <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Blue-Footed-Boobies-on-Santiago-Island.jpeg?ssl=1" alt="Blue-footed boobies" loading="lazy">
+      <div class="photo-cap">Blue-footed boobies</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Piquero_patirrojo_(Sula_sula),_Punta_Pitt,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_64.JPG" alt="Red-footed booby" loading="lazy">
+      <div class="photo-cap">Red-footed booby — the rarer shot</div>
+    </div>
+  </div>
+</div>
+
+<!-- ——— FLOREANA ——— -->
+<div class="island-divider"><div class="island-label">Floreana Island</div></div>
+
+<!-- STOP 4: PUNTA CORMORANT -->
+<div class="stop">
+  <div class="stop-num">Stop 04</div>
+  <h2>Punta Cormorant — Flamingos</h2>
+  <p class="stop-desc">Bright pink flamingos wading in a shallow lagoon backed by an olive-green sand beach — a combination you won't see anywhere else. The beach gets its distinctive colour from olivine crystals mixed in the sand. Sea turtles lay eggs in the dunes beyond the lagoon at night.</p>
+  <span class="stop-tags">Flamingos · Olive sand beach · Sea turtle nesting</span>
+  <div class="grid g3">
+    <div class="photo h280">
+      <img src="https://www.globeguide.ca/wp-content/uploads/2014/07/galapagos-sombrerochino-flamingo.jpg" alt="Galapagos flamingos" loading="lazy">
+      <div class="photo-cap">Flamingos at the lagoon</div>
+    </div>
+    <div class="photo h280">
+      <img src="https://www.globeguide.ca/wp-content/uploads/2014/04/galapagos-floreana-beach2.jpg" alt="Floreana olive beach" loading="lazy">
+      <div class="photo-cap">The distinctive olive-green beach</div>
+    </div>
+    <div class="photo h280">
+      <img src="https://www.globeguide.ca/wp-content/uploads/2014/07/galapagos-floreana-beach4.jpg" alt="Floreana beach scene" loading="lazy">
+      <div class="photo-cap">Beach and lagoon, Floreana</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 5: POST OFFICE BAY -->
+<div class="stop">
+  <div class="stop-num">Stop 05</div>
+  <h2>Post Office Bay — The Barrel</h2>
+  <p class="stop-desc">A 200-year-old wooden barrel used by whalers as a message-passing system still stands here — and still works. Visitors leave postcards with no stamp, hoping a passing stranger heading to that destination will hand-deliver them. Some postcards have been delivered years later. Some never arrive.</p>
+  <span class="stop-tags">Historic landmark · Shareable story · Quirky content gold</span>
+  <div class="grid g2r">
+    <div class="nested" style="grid-template-rows: 1fr;">
+      <div class="photo h320">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Post_office-Floreana.jpg" alt="Post Office Bay barrel" loading="lazy">
+        <div class="photo-cap">The 200-year-old barrel, Post Office Bay</div>
+      </div>
+    </div>
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Punta_Cormorant_(49534613932).jpg" alt="Punta Cormorant" loading="lazy">
+      <div class="photo-cap">Floreana coastline</div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Story angle: "I dropped a postcard here with no stamp. It might arrive in a year. It might never arrive. That's the point." Caption writes itself.</p>
+</div>
+
+<!-- ——— ESPAÑOLA ——— -->
+<div class="island-divider"><div class="island-label">Española Island</div></div>
+
+<!-- STOP 6: PUNTA SUAREZ -->
+<div class="stop">
+  <div class="stop-num">Stop 06</div>
+  <h2>Punta Suarez — Waved Albatross</h2>
+  <p class="stop-desc">Española is the only place in the world where the waved albatross nests. With a 2.4-metre wingspan, these are the largest birds in the Galápagos — and during breeding season they perform an elaborate courtship dance: bowing, sky-pointing, bill-circling, honking. The 2022 Galápagos Conservation Trust photo competition winner was an albatross shot from right here.</p>
+  <span class="stop-tags">Waved albatross · Courtship dance · World's only nesting colony</span>
+  <div class="grid g2">
+    <div class="photo h360">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Courting_Waved_Albatross_(6519212753).jpg" alt="Waved albatross courtship" loading="lazy">
+      <div class="photo-cap">Waved albatross courtship dance</div>
+    </div>
+    <div class="photo h360">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Waved_Albatross_(Phoebastria_irrorata)_-Espanola_-Punta_Suarez3.jpg" alt="Waved albatross portrait" loading="lazy">
+      <div class="photo-cap">Waved albatross portrait, Punta Suarez</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 7: GARDNER BAY -->
+<div class="stop">
+  <div class="stop-num">Stop 07</div>
+  <h2>Gardner Bay — Sea Lions</h2>
+  <p class="stop-desc">One of the most beautiful beaches in the world, and one of the most unusual. The white sand at Gardner Bay is shared with a colony of Galápagos sea lions who have no instinct to avoid humans. Pups will approach you out of curiosity. Mothers sleep centimetres from your feet. Juveniles play alongside snorkellers in the crystal shallows. Also — Christmas iguanas with vivid red and green breeding colours.</p>
+  <span class="stop-tags">Sea lion encounters · White sand beach · Christmas iguanas</span>
+  <div class="grid g2l">
+    <div class="photo h400">
+      <img src="https://images.unsplash.com/photo-1595517930215-d2778a56ac93?w=900&q=85" alt="Sea lion beach" loading="lazy">
+      <div class="photo-cap">Sea lion, Gardner Bay</div>
+    </div>
+    <div class="photo h400">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Christmas_Iguanas,_Isla_Espanola,_Gardner_Bay,_Galapagos_-_panoramio.jpg" alt="Christmas iguanas Gardner Bay" loading="lazy">
+      <div class="photo-cap">Christmas iguanas — vivid red/green breeding colours</div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Best shot: lie down on the beach at eye level with a sea lion pup. The animals have zero fear of humans. Get within 1 metre. Influencer gold.</p>
+</div>
+
+<!-- ——— SANTA CRUZ ——— -->
+<div class="island-divider"><div class="island-label">Santa Cruz Island</div></div>
+
+<!-- STOP 8: SANTA CRUZ HIGHLANDS -->
+<div class="stop">
+  <div class="stop-num">Stop 08</div>
+  <h2>Santa Cruz Highlands — Giant Tortoises</h2>
+  <p class="stop-desc">The rolling green highlands are home to free-roaming giant tortoises — some over 100 years old and weighing 250kg. In the morning mist, ancient tortoises move through the grasslands in a scene that has barely changed in a million years. Guests walk among them at eye level, with nothing between you and a creature that was alive before your grandparents were born.</p>
+  <span class="stop-tags">Giant tortoises · Morning mist · Free-roaming wildlife</span>
+  <div class="grid g2">
+    <div class="photo h320">
+      <img src="https://brendansadventures.com/wp-content/uploads/2015/10/Santa-Cruz-Island-Galapagos-Islands-4.jpg" alt="Giant tortoise close up" loading="lazy">
+      <div class="photo-cap">"Do you mind?" — giant tortoise close encounter</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://brendansadventures.com/wp-content/uploads/2015/10/Santa-Cruz-Island-Galapagos-Islands-3.jpg" alt="Giant tortoise portrait" loading="lazy">
+      <div class="photo-cap">Portrait in the highlands mist</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 9: CHARLES DARWIN RESEARCH STATION -->
+<div class="stop">
+  <div class="stop-num">Stop 09</div>
+  <h2>Charles Darwin Research Station — Lonesome George</h2>
+  <p class="stop-desc">Lonesome George was the last Pinta Island tortoise. He died in 2012, the end of an entire species, and is now preserved here. The station also runs active conservation breeding programmes that have brought several tortoise species back from the brink. Part scientific facility, part living monument to what's at stake.</p>
+  <span class="stop-tags">Conservation · Lonesome George · Tortoise breeding programme</span>
+  <div class="grid g2">
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lonesome_George_at_Charles_Darwin_Research_Station_(September_2025).jpg" alt="Lonesome George" loading="lazy">
+      <div class="photo-cap">Lonesome George — the last of his kind</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_Research_Station.jpg" alt="Darwin Research Station" loading="lazy">
+      <div class="photo-cap">Charles Darwin Research Station, Puerto Ayora</div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Story angle: "This is Lonesome George. He was the last of his kind. When he died, an entire species died with him. That's what conservation is fighting against."</p>
+</div>
+
+<!-- ——— SANTIAGO / BARTOLOMÉ ——— -->
+<div class="island-divider"><div class="island-label">Bartolomé &amp; Santiago</div></div>
+
+<!-- STOP 10: BARTOLOMÉ -->
+<div class="stop">
+  <div class="stop-num">Stop 10</div>
+  <h2>Bartolomé — Pinnacle Rock</h2>
+  <p class="stop-desc">The most photographed view in the Galápagos, and for good reason. A 374-step boardwalk leads to a panorama that stops conversation entirely — Pinnacle Rock in the foreground, the turquoise bay below, neighbouring Santiago behind. Galápagos penguins nest at the base of the rock — tropical penguins in warm water, an impossible combination.</p>
+  <span class="stop-tags">The postcard shot · Galapagos penguins · Summit panorama</span>
+  <div class="grid g3">
+    <div class="photo h320">
+      <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Pinnacle-Rock-and-Bartolome-Island-Galapagos.jpeg?ssl=1" alt="Pinnacle Rock Bartolome" loading="lazy">
+      <div class="photo-cap">Pinnacle Rock from the water</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Bartolome-Island-White-Sand-Beach-Galapagos.jpeg?ssl=1" alt="Bartolome white sand beach" loading="lazy">
+      <div class="photo-cap">White sand beach, Bartolomé</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://i0.wp.com/www.themodernpostcard.com/wp-content/uploads/2022/06/Penguins-on-Santiago-Island-Galapagos.jpeg?ssl=1" alt="Galapagos penguins" loading="lazy">
+      <div class="photo-cap">Galápagos penguins on the rocks</div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Shoot from the TOP of the 374 steps — that's the Galápagos postcard view. Worth every step in the heat.</p>
+</div>
+
+<!-- STOP 11: SOMBRERO CHINO -->
+<div class="stop">
+  <div class="stop-num">Stop 11</div>
+  <h2>Sombrero Chino — Chinese Hat Islet</h2>
+  <p class="stop-desc">A perfectly cone-shaped volcanic island visible from the water — its silhouette looks exactly like a traditional Chinese straw hat. Snorkel the crystal-clear channel alongside Galápagos penguins, white-tipped reef sharks, and sea turtles. One of the most serene and photogenic anchorages in the archipelago.</p>
+  <span class="stop-tags">Volcanic cone silhouette · Penguins · Snorkelling with sharks</span>
+  <div class="grid g2">
+    <div class="photo h320">
+      <img src="https://www.globeguide.ca/wp-content/uploads/2014/07/galapagos-sombrerochino-shark3.jpg" alt="Sombrero Chino shark" loading="lazy">
+      <div class="photo-cap">White-tipped reef shark, Sombrero Chino</div>
+    </div>
+    <div class="photo h320">
+      <img src="https://www.globeguide.ca/wp-content/uploads/2014/07/galapagos-sombrerochino-penguin2.jpg" alt="Sombrero Chino penguin" loading="lazy">
+      <div class="photo-cap">Galápagos penguin at the islet</div>
+    </div>
+  </div>
+</div>
+
+<!-- ——— NORTH SEYMOUR ——— -->
+<div class="island-divider"><div class="island-label">North Seymour Island</div></div>
+
+<!-- STOP 12: NORTH SEYMOUR -->
+<div class="stop">
+  <div class="stop-num">Stop 12</div>
+  <h2>North Seymour — Frigatebirds</h2>
+  <p class="stop-desc">The male magnificent frigatebird inflates a brilliant scarlet throat pouch the size of a football during breeding season — one of the most bizarre and spectacular displays in the natural world. Nothing else looks like this anywhere on Earth. Birds display within metres of guests on the trail. Blue-footed boobies perform their absurd foot-shuffle courtship dance alongside.</p>
+  <span class="stop-tags">Frigatebird · Scarlet throat pouch · Stop-scroll guaranteed</span>
+  <div class="grid g2">
+    <div class="photo h360">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Frigatebirds_-_North_Seymour_Island_-_Galapagos_Islands_-_Ecuador_(4871159482).jpg" alt="Frigatebirds colony North Seymour" loading="lazy">
+      <div class="photo-cap">Frigatebird colony, North Seymour</div>
+    </div>
+    <div class="photo h360">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Magnificent_Frigatebird_(Fregata_magnificens)_North_Seymour_Island_Galapagos.JPG" alt="Frigatebird close up" loading="lazy">
+      <div class="photo-cap">Magnificent frigatebird — close-up</div>
+    </div>
+  </div>
+  <p class="pro-tip">💡 Top 3 stop-scroll shots of the whole trip: Kicker Rock at sunrise · Pinnacle Rock from summit · Frigatebird with inflated red pouch — eye-level, fill the frame.</p>
+</div>
+
+<div class="divider"></div>
+
+<footer>
+  <div class="f-logo">Airguides</div>
+  <div class="f-sub">World-class expeditions with world-class storytellers</div>
+  <div class="f-url">Book or enquire: <a href="https://www.airguides.com" target="_blank">airguides.com</a></div>
+</footer>
+
+</body>
+</html>
